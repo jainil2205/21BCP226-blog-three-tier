@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21BCP236 - My Jekyll Blog</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>21BCP226 - Three Tier Application</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="main-content">
+            <h2>Introduction to Three-Tier Application with MongoDB, Node.js, React.js, and Docker</h2>
+            <p>A three-tier architecture divides an application into three logical layers: presentation layer,
+                application layer, and data layer. In our case, we are using the following technologies:</p>
+            <ul>
+                <li><strong>MongoDB:</strong> A NoSQL database used as the data layer to store and manage application
+                    data.</li>
+                <li><strong>Node.js:</strong> A JavaScript runtime environment used in the application layer to run
+                    server-side code.</li>
+                <li><strong>React.js:</strong> A JavaScript library used in the presentation layer to build interactive
+                    user interfaces.</li>
+                <li><strong>Docker:</strong> A containerization platform used to package the application along with its
+                    dependencies into containers for easy deployment and scalability.</li>
+            </ul>
+            <h2>Steps to Deploy the Three-Tier Application</h2>
+            <ol>
+                <li>
+                    <h3>Get the Code from the required Repository</h3>
+                </li>
+                <li>
+                    <h3>Build Docker Images</h3>
+                    <p>Write Dockerfiles for frontend, backend, and MongoDB server. Then, build images for each
+                        component using Docker.</p>
+                </li>
+                <li>
+                    <h3>Run Docker Containers</h3>
+                    <p>Run Docker containers using the built images for frontend, backend, and MongoDB server.</p>
+                </li>
+            </ol>
+        </section>
+
+        <div class="container">
+            <section class="main-content">
+                <h2>Understanding Dockerfiles</h2>
+                <p>A Dockerfile is a text file that contains instructions for building a Docker image. Here's a sample
+                    Dockerfile for each component:</p>
+                <ul>
+                    <li>
+                        <h3>Frontend Dockerfile:</h3>
+                        <pre>
+                            <code>
+                                FROM node:latest
+                                WORKDIR /app
+                                COPY package*.json ./
+                                RUN npm install
+                                COPY . .
+                                EXPOSE 3000
+                                CMD ["npm", "start"]
+                        </code>
+                        </pre>
+                    </li>
+                    <li>
+                        <h3>Backend Dockerfile:</h3>
+                        <pre>
+                        <code>
+                            FROM node:latest
+                            WORKDIR /app
+                            COPY package*.json ./
+                            RUN npm install
+                            COPY . .
+                            EXPOSE 5000
+                            CMD ["npm", "start"]
+                        </code>
+                        </pre>
+                    </li>
+                </ul>
+
+                <h2>Pushing Docker Images to Docker Hub</h2>
+                <p>Follow these steps to push Docker images to Docker Hub:</p>
+                <ol>
+                    <li>
+                        <h3>Login to Docker Hub:</h3>
+                        <pre><code>docker login</code></pre>
+                        <p>Enter your Docker Hub username and password when prompted.</p>
+                    </li>
+                    <li>
+                        <h3>Tag the Docker Image:</h3>
+                        <pre><code>docker tag my-mongodb username/my-mongodb</code></pre>
+                        <p>Replace <code>username</code> with your Docker Hub username.</p>
+                    </li>
+                    <li>
+                        <h3>Push the Docker Image:</h3>
+                        <pre><code>docker push username/my-mongodb</code></pre>
+                        <p>This will push the MongoDB Docker image to your Docker Hub repository.</p>
+                    </li>
+                </ol>
+                <h2>Conclusion</h2>
+                <p>By following the steps outlined in this guide, you can deploy a three-tier application using MongoDB,
+                    Node.js, React.js, and Docker. This architecture provides scalability, flexibility, and ease of
+                    deployment for modern web applications.</p>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 21BCP236 - PDEU, Gandhinagar</p>
+        </div>
+    </footer>
+</body>
+
+</html>
